@@ -1,4 +1,4 @@
-# racinglineinator 
+# __RacingLineinator__
 This repository aims to calculate the ideal racing line of any given track. Ways of achieving this will be discussed below.
 
 ## Methods
