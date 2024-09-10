@@ -1,4 +1,4 @@
-import gdal
+from osgeo import gdal
 
 nurburgring_tiff = gdal.Open("./data/nurburgring.tif")
 

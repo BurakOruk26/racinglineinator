@@ -13,7 +13,7 @@ services:
     ports:
       - "5000:5000"
     
-    command: python3 app.py
+    command: bash -c "source activate base && conda activate rl && python3 app.py"
     
     # shared memory size
     shm_size: '2gb'
