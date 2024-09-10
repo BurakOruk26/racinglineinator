@@ -1,0 +1,31 @@
+services:
+  
+  raster-vision:
+    
+    # this is the official image, uploaded by Rastervision team
+    image: https://github.com/BurakOruk26/racinglineinator/blob/main/Dockerfile
+    
+    # a name, short for tapu-parsel
+    container_name: rl
+    
+    #! IMPORTANT NOTE: Change the volume directory the working directory of _main.py for your system
+    volumes:
+      -./data:/app/data
+    
+    ports:
+      - "8888:8888"
+    
+    # this command prevents the container from stop running after composing it up (i.e. runs forever)
+    command: tail -f /dev/null
+    
+    # shared memory size
+    shm_size: '2gb'
+    
+    # this enables the usage of GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
