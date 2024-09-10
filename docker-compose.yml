@@ -1,6 +1,6 @@
 services:
   
-  raster-vision:
+  racinglineinator:
     
     # this is the official image, uploaded by Rastervision team
     image: https://github.com/BurakOruk26/racinglineinator/blob/main/Dockerfile
