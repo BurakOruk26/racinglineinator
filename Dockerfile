@@ -21,4 +21,3 @@ RUN echo "conda activate rl" >> ~/.bashrc
 
 WORKDIR /app/src
 COPY ./_main.py /app/src
-ENTRYPOINT [ "python3", "_main.py" ]

@@ -7,15 +7,13 @@ services:
     # a name, short for Racinglineinator
     container_name: rl
     
-    #! IMPORTANT NOTE: Change the volume directory the working directory of _main.py for your system
     volumes:
       - ./:/app/src
     
     ports:
-      - "8888:8888"
+      - "5000:5000"
     
-    # this command prevents the container from stop running after composing it up (i.e. runs forever)
-    command: tail -f /dev/null
+    command: python3 app.py
     
     # shared memory size
     shm_size: '2gb'
