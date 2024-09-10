@@ -2,3 +2,5 @@
 
 *.tif
 *.tiff
+
+__pycache__

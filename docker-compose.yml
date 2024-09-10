@@ -9,7 +9,7 @@ services:
     
     #! IMPORTANT NOTE: Change the volume directory the working directory of _main.py for your system
     volumes:
-      - ./data:/app/data
+      - ./:/app/src
     
     ports:
       - "8888:8888"

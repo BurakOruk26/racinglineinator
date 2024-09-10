@@ -20,5 +20,5 @@ RUN conda env create --name rl --file environment.yml
 RUN echo "conda activate rl" >> ~/.bashrc
 
 WORKDIR /app/src
-COPY ./racinglineinator.py /app/src
-ENTRYPOINT [ "python3", "racinglineinator.py" ]
+COPY ./_main.py /app/src
+ENTRYPOINT [ "python3", "_main.py" ]
