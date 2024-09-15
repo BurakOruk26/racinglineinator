@@ -22,7 +22,7 @@ def get_image():
     img = Image.fromarray(image_array.astype('uint8'))
 
     # Resize the image
-    new_size = (300, 200)  # width, height
+    new_size = (700, 700)  # width, height
     img.thumbnail(new_size)
     
     # Save the image to a BytesIO object (as an in-memory file)
