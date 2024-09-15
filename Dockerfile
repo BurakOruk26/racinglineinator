@@ -20,4 +20,3 @@ RUN conda env create --name rl --file environment.yml
 RUN echo "conda activate rl" >> ~/.bashrc
 
 WORKDIR /app/src
-COPY ./_main.py /app/src

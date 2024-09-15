@@ -3,3 +3,4 @@ channels:
 dependencies:
   - python=3.12.4
   - gdal
+  - flask=2.3.2
