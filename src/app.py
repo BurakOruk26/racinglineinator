@@ -5,6 +5,8 @@ from io import BytesIO
 from PIL import Image
 import numpy as np
 
+from process_image import process_image
+
 app = Flask(__name__)
 
 # open the geospatial data 
@@ -26,6 +28,9 @@ def show_image():
 
 @app.route('/image')
 def get_image():
+    # process the image
+    process_image(image_array)
+
     # Convert the NumPy array to a PIL Image
     img = Image.fromarray(image_array.astype('uint8'))
 
