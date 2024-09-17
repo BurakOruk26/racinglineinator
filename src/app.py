@@ -3,14 +3,22 @@ from osgeo import gdal
 from flask import Flask, render_template, send_file
 from io import BytesIO
 from PIL import Image
+import numpy as np
 
 app = Flask(__name__)
 
 # open the geospatial data 
-nurburgring_tiff = gdal.Open("./data/nurburgring.tif")
+nurburgring_tiff : gdal.Dataset = gdal.Open("./data/nurburgring.tif")
 
-# Mock-up of your image array (example)
-image_array =  nurburgring_tiff #np.random.rand(200, 300, 3) * 255  # Random RGB image
+# Read the raster data as a NumPy array
+image_array = nurburgring_tiff.ReadAsArray()
+
+# If the image has multiple bands, stack them along the third axis to create an RGB image
+if len(image_array.shape) == 3:
+    image_array = np.dstack([image_array[i, :, :] for i in range(image_array.shape[0])])
+else:
+    # If the image has only one band, you might want to replicate it across three channels
+    image_array = np.stack((image_array,) * 3, axis=-1)
 
 @app.route('/')
 def show_image():
@@ -34,4 +42,4 @@ def get_image():
 
 if __name__ == '__main__':
     print("We have done it mamma!")
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)

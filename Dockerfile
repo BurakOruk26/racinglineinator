@@ -1,22 +1,19 @@
-FROM ubuntu:24.04
+FROM continuumio/miniconda3
 WORKDIR /app
-COPY ./environment.yml /app
 
-# install miniconda
-RUN DEBIAN_FRONTEND=noninteractive && \
-    apt-get update && \
-    apt-get install -y wget && \
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /opt/miniconda-installer.sh && \
-    bash /opt/miniconda-installer.sh -b -p /opt/miniconda && \
-    rm /opt/miniconda-installer.sh
-
-# update PATH
-ENV PATH="/opt/miniconda/bin:${PATH}"
+# copy the environment file to the container
+COPY ./environment.yml /app/environment.yml
 
 # create conda environment
-RUN conda env create --name rl --file environment.yml
+RUN conda env create -f environment.yml
 
 # activate conda environment
-RUN echo "conda activate rl" >> ~/.bashrc
+SHELL ["conda", "run", "-n", "rl", "/bin/bash", "-c"]
 
-WORKDIR /app/src
+ENV FLASK_APP=src/app.py
+
+# expose the port
+EXPOSE 5000
+
+# run the flask application
+CMD ["conda", "run", "--no-capture-output", "-n", "rl", "flask", "run", "--host=0.0.0.0"]

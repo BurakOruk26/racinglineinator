@@ -1,20 +1,14 @@
 services:
-  
   racinglineinator:
-    
     build: .
-    
-    # a name, short for Racinglineinator
-    container_name: rl
-    
-    volumes:
-      - ./:/app/src
-    
     ports:
       - "5000:5000"
-    
-    command: bash -c "source activate base && conda activate rl && python3 app.py"
-    
+    # a name, short for Racinglineinator
+    container_name: rl
+    volumes:
+      - ./src/:/app/src
+      - ./data/:/app/data
+
     # shared memory size
     shm_size: '2gb'
     

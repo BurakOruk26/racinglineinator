@@ -1,6 +1,9 @@
+name: rl
 channels:
   - conda-forge
 dependencies:
   - python=3.12.4
-  - gdal
   - flask=2.3.2
+  - numpy=2.1.1
+  - pillow
+  - gdal
