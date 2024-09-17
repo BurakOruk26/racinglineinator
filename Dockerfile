@@ -16,4 +16,4 @@ ENV FLASK_APP=src/app.py
 EXPOSE 5000
 
 # run the flask application
-CMD ["conda", "run", "--no-capture-output", "-n", "rl", "flask", "run", "--host=0.0.0.0"]
+CMD ["conda", "run", "-n", "rl", "flask", "run", "--host=0.0.0.0"]
