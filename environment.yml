@@ -7,4 +7,3 @@ dependencies:
   - numpy=2.1.1
   - pillow
   - opencv
-  - gdal
